@@ -20,7 +20,7 @@ export const NETWORK_CONFIG = {
 
 // Get the appropriate base URL based on platform and environment
 export function getBaseURL(): string {
-  const isDevelopment = import.meta.env.DEV || __DEV__;
+  const isDevelopment = import.meta.env.DEV;
   const config = isDevelopment ? NETWORK_CONFIG.development : NETWORK_CONFIG.production;
   
   if (Platform.OS === 'web') {
