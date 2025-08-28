@@ -23,7 +23,7 @@
     "ios": "expo run:ios",
     "vercel-build": "npm run build",
     "vercel-dev": "npm run dev:backend"
-  },
+  }, //
   "dependencies": {
     "@expo/metro-runtime": "^5.0.4",
     "@fortawesome/fontawesome-free": "^7.0.0",
