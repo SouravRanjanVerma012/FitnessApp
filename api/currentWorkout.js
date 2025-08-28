@@ -1,9 +1,9 @@
-// Vercel serverless function for /api/current-workout
 import currentWorkoutRoutes from '../server/routes/currentWorkout.js';
-import express from 'express';
 
-const app = express();
-app.use(express.json());
-app.use(currentWorkoutRoutes);
-
-export default app;
+export default async function handler(req, res) {
+  if (req.method === 'GET' || req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') {
+    return currentWorkoutRoutes(req, res);
+  } else {
+    res.status(404).json({ error: 'Not Found' });
+  }
+}

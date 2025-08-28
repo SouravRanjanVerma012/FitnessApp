@@ -9,12 +9,12 @@ export const NETWORK_CONFIG = {
     ios: 'http://localhost:3000/api', // iOS simulator
     physical: 'http://192.168.1.100:3000/api', // Physical device (adjust IP)
   },
-  // Production URLs
+  // Production URLs - use environment variables or default to current origin
   production: {
-    web: 'https://your-production-domain.com/api',
-    android: 'https://your-production-domain.com/api',
-    ios: 'https://your-production-domain.com/api',
-    physical: 'https://your-production-domain.com/api',
+    web: import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api` : '/api'),
+    android: import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api` : '/api'),
+    ios: import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api` : '/api'),
+    physical: import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api` : '/api'),
   }
 };
 

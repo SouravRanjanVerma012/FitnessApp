@@ -1,9 +1,14 @@
-// Vercel serverless function for /api/auth
+import { json } from 'express';
 import authRoutes from '../server/routes/auth.js';
-import express from 'express';
 
-const app = express();
-app.use(express.json());
-app.use(authRoutes);
-
-export default app;
+export default async function handler(req, res) {
+  if (req.method === 'POST' && req.url === '/api/auth/login') {
+    return authRoutes(req, res);
+  } else if (req.method === 'POST' && req.url === '/api/auth/register') {
+    return authRoutes(req, res);
+  } else if (req.method === 'GET' && req.url === '/api/auth/me') {
+    return authRoutes(req, res);
+  } else {
+    res.status(404).json({ error: 'Not Found' });
+  }
+}

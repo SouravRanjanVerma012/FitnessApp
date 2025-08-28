@@ -1,9 +1,9 @@
-// Vercel serverless function for /api/form-check
 import formCheckRoutes from '../server/routes/formCheck.js';
-import express from 'express';
 
-const app = express();
-app.use(express.json());
-app.use(formCheckRoutes);
-
-export default app;
+export default async function handler(req, res) {
+  if (req.method === 'GET' || req.method === 'POST') {
+    return formCheckRoutes(req, res);
+  } else {
+    res.status(404).json({ error: 'Not Found' });
+  }
+}
